@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, Manrope, Inter } from "next/font/google";
 import "./globals.css";
+import Providers from "@/components/Providers";
 
 const dmSerif = DM_Serif_Display({
   variable: "--font-serif",
@@ -41,7 +42,9 @@ export default function RootLayout({
       className={`${dmSerif.variable} ${manrope.variable} ${inter.variable}`}
     >
       <body className="min-h-screen bg-cream font-body text-brown antialiased">
+        <Providers>
         {children}
+    </Providers>
       </body>
     </html>
   );
