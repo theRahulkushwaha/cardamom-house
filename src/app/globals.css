@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand */
+  --color-amber: #b45309;
+  --color-amber-glow: rgba(180, 83, 9, 0.15);
+  --color-amber-dark: #92400a;
+
+  /* Backgrounds */
+  --color-cream: #fff8f2;
+  --color-card: #fffcf8;
+  --color-beige: #f3ead3;
+
+  /* Text */
+  --color-brown: #2c211a;
+  --color-muted: #78716c;
+
+  /* Secondary palette */
+  --color-sage: #8a9a86;
+  --color-terracotta: #c27a5b;
+  --color-soft-brown: #8b7355;
+
+  /* Dietary tags */
+  --color-veg-bg: #e8ece6;
+  --color-veg-text: #8a9a86;
+  --color-gf-bg: #e5ecf2;
+  --color-gf-text: #7e9cb9;
+  --color-spicy-bg: #f8ebe4;
+  --color-spicy-text: #d97746;
+  --color-soldout-bg: #e7e5e4;
+  --color-soldout-text: #a8a29e;
+
+  /* Fonts */
+  --font-serif: var(--font-serif), Georgia, serif;
+  --font-body: var(--font-body), system-ui, sans-serif;
+  --font-accent: var(--font-accent), system-ui, sans-serif;
+
+  /* Radii */
+  --radius-card: 32px;
+  --radius-image: 24px;
+  --radius-small: 20px;
+  --radius-pill: 999px;
+
+  /* Easing */
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Container */
+  --container-page: 1280px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--color-amber-glow);
+  color: var(--color-brown);
+}
+
+/* Consistent, visible focus ring everywhere — never suppressed. */
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media print {
+  header nav,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+  }
+  section {
+    break-inside: avoid;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s var(--ease-luxury) both;
+}
