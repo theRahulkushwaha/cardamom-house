@@ -1,120 +1,361 @@
-# Cardamom House — Menu Page
+# ☕ Cardamom House — Premium Café Menu Experience
 
-A single-page, mobile-first menu experience for a fictional Lisbon brunch café, built for the
-Kwill frontend trial task.
+A modern, responsive, and interactive digital café menu built with **Next.js 15**, **React 19**, **Tailwind CSS v4**, and **TypeScript**.
 
-## Stack
+This project showcases a premium restaurant website featuring a dynamic menu, live opening hours, dietary filtering, dark mode, smooth scrolling, accessibility improvements, and a professional print layout.
 
-- **Next.js 15** (App Router)
+---
+
+## 📸 Preview
+
+> Responsive restaurant menu with a luxury café aesthetic.
+
+### Features
+
+- 🌙 Dark / Light Mode
+- 🥗 Dietary Filters (All, Vegetarian, Gluten-Free)
+- 📱 Fully Responsive Design
+- 📍 Sticky Category Navigation
+- 🎯 Scroll Spy Navigation
+- 🍽️ Today's Special Section
+- ⏰ Live Opening Hours
+- 🚫 Sold Out Item Support
+- 🎭 Demo State Switcher
+- ♿ Accessibility Features
+- 🖨️ Professional Print Layout
+- ✨ Smooth Animations
+- ⚡ Optimized Performance
+
+---
+
+# 🚀 Tech Stack
+
+- **Next.js 15**
 - **React 19**
-- **TypeScript** (strict mode, no `any`)
-- **Tailwind CSS v4** (CSS-native `@theme` tokens, no `tailwind.config.js`)
-- **lucide-react** available for icons (kept usage minimal — the design leans on
-  typography and color rather than iconography)
+- **TypeScript**
+- **Tailwind CSS v4**
+- **Lucide React**
+- **CSS Variables**
+- **Intersection Observer API**
 
-No backend, no CMS. Menu data is a typed object in `src/data/menu.ts`.
+---
 
-## Running locally
-
-```bash
-npm install
-npm run dev
-```
-
-Then open `http://localhost:3000`.
-
-```bash
-npm run build   # production build
-npm run start   # serve the production build
-npm run lint    # eslint
-```
-
-> Note: `next/font/google` fetches font files at build time, so the build step needs
-> network access to `fonts.googleapis.com` (this is automatic on Vercel).
-
-## The three demo states
-
-The task asks for three states, switchable via a URL query param:
-
-- `?state=open` (default) — simulated as Tuesday, 11:30. Café open, special available.
-- `?state=closed` — simulated as Monday. Café closed, with a friendly banner and the
-  next opening time.
-- `?state=special-sold-out` — simulated as Tuesday, 11:30, but the Saffron French Toast
-  is sold out: it shows a dimmed card with a "Sold out" pill in the menu list, and the
-  Today's Special callout at the top updates its copy, price styling, and CTA
-  accordingly instead of just disappearing.
-
-There's also a small floating **Demo** switcher pinned to the bottom of the page (hidden
-in print) so a reviewer can flip between all three states without editing the URL by hand.
-
-The "current time" logic lives in `src/lib/hours.ts` (pure functions, parses the hours
-strings and returns open/closed + next-opening info) and `src/lib/demo-state.ts` (maps the
-query param to a simulated point in time). I chose to simulate time rather than use the
-visitor's real clock/timezone — the task explicitly allows this, and it makes the three
-states reliably demoable regardless of when someone reviews the page.
-
-## Structure
+# 📂 Project Structure
 
 ```
 src/
-  app/            # App Router entry: layout, page, global styles
-  components/     # Presentational + a couple of small client components
-  data/menu.ts    # Hard-coded, typed menu data
-  lib/            # Pure helper functions (hours parsing, demo state, price formatting)
-  types/menu.ts   # Shared TypeScript types
+│
+├── app/
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+│
+├── components/
+│   ├── Hero.tsx
+│   ├── ThemeToggle.tsx
+│   ├── DietaryFilter.tsx
+│   ├── CategoryNav.tsx
+│   ├── MenuSection.tsx
+│   ├── MenuItemCard.tsx
+│   ├── TodaySpecial.tsx
+│   ├── ClosedBanner.tsx
+│   ├── HoursBlock.tsx
+│   ├── Footer.tsx
+│   ├── DemoStateSwitcher.tsx
+│   └── MenuExperience.tsx
+│
+├── data/
+│   └── menu.ts
+│
+├── lib/
+│   ├── hours.ts
+│   └── demo-state.ts
+│
+└── types/
+    └── menu.ts
 ```
 
-Most components are plain server components. Only three things are client components,
-and each needs to be for a concrete reason:
+---
 
-- `MenuExperience` — reads the `?state=` query param via `useSearchParams`.
-- `CategoryNav` — needs `IntersectionObserver` for scroll-spy and click handlers for
-  smooth-scrolling.
-- `DemoStateSwitcher` — just renders links, but lives alongside the other client
-  components for consistency.
+# ✨ Features
 
-## Design decisions
+## 🌙 Dark / Light Theme
 
-- **Typography-led, no photography.** I leaned on the editorial brief (large serif
-  headlines, generous whitespace, warm neutral palette) rather than sourcing stock food
-  photography, which tends to read as generic. This is called out as a defensible option
-  in the brief.
-- **Amber (`#B45309`) is used with intent, not decoration**: the "open" status dot, the
-  primary CTA, prices, the active category pill, the today's-special glow border, the
-  "today" row in the hours table, and hover/focus states. Everything else stays in warm
-  neutrals so the amber keeps its weight.
-- **One sticky nav, not two.** The design system sketches a floating top nav on desktop
-  and a bottom nav on mobile. I built a single horizontally-scrollable sticky pill nav
-  that works at both sizes — it's simpler to keep accessible and consistent, and a
-  second, separate mobile-only nav felt like more surface area than the task needed.
-- **Scroll-spy uses `IntersectionObserver`**, not scroll-position math, so it stays cheap
-  and accurate as sections resize.
-- **Sold-out degrades in place.** The item stays visible (so people know it existed and
-  what it costs) but is dimmed and tagged "Sold out" rather than removed, and the
-  special callout swaps its copy/CTA rather than hiding.
+- Toggle between Light and Dark mode
+- Automatically detects system theme
+- Theme preference saved using Local Storage
+- Smooth transitions between themes
 
-## What I'm proud of
+---
 
-The hours/status logic (`src/lib/hours.ts`) is a small, pure, fully-typed function that
-parses the raw hours strings and handles "closed all day," "before opening," and "after
-closing" as distinct cases, with a real (not padded) "next opening" calculation that
-walks forward through the week. It's unit-testable in isolation from any component.
+## 🥗 Dietary Filter
 
-## What I'd revisit with another half-day
+Filter menu items by:
 
-- Add `prefers-color-scheme` dark mode (stretch goal, not attempted) — the token setup
-  in `globals.css` would make this a fairly mechanical addition.
-- A dietary filter (V / GF / all) — the tag data is already modeled for it; I'd add a
-  small client component with a filtered view rather than mutating the shared data.
-- Real unit tests for `getOpenStatus` (edge cases: midnight rollover, a day with no
-  entry at all) — I hand-verified the three required scenarios but didn't wire up a test
-  runner given the time box.
-- A subtle Motion-driven entrance instead of the current CSS `@keyframes fade-up` — kept
-  it CSS-only to avoid an extra dependency for a small effect, but Framer Motion's
-  stagger/shared-layout primitives would make the category-nav active-pill transition
-  nicer.
+- All
+- Vegetarian
+- Gluten-Free
 
-## Deployment
+Empty categories are automatically hidden.
 
-Push to GitHub, import into Vercel, no environment variables required. `npm run build`
-is the only build step.
+---
+
+## 🍽️ Today's Special
+
+Displays the featured menu item of the day.
+
+Supports:
+
+- Available
+- Sold Out
+
+---
+
+## ⏰ Live Opening Hours
+
+Restaurant status updates dynamically.
+
+Shows:
+
+- Open Now
+- Closed
+- Opens Tomorrow
+- Opens Next Available Day
+
+---
+
+## 📍 Sticky Navigation
+
+Category navigation stays visible while scrolling.
+
+Includes:
+
+- Smooth scrolling
+- Active section highlighting
+- Mobile horizontal scrolling
+
+---
+
+## 🎭 Demo States
+
+Preview different restaurant states using URL parameters.
+
+Examples:
+
+```
+?state=open
+```
+
+```
+?state=closed
+```
+
+```
+?state=special-sold-out
+```
+
+---
+
+## ♿ Accessibility
+
+- Skip Navigation Link
+- Keyboard Accessible
+- Focus Indicators
+- Semantic HTML
+- Screen Reader Support
+- ARIA Labels
+
+---
+
+## 🖨️ Print Layout
+
+Optimized for printing.
+
+Print mode automatically:
+
+- Hides navigation
+- Hides buttons
+- Removes animations
+- Removes shadows
+- Uses black text
+- Uses white background
+- Prevents page breaks inside menu sections
+
+Perfect for generating printable restaurant menus.
+
+---
+
+## 📱 Responsive Design
+
+Optimized for:
+
+- Mobile
+- Tablet
+- Laptop
+- Desktop
+
+---
+
+## 🎨 UI Highlights
+
+- Luxury café aesthetic
+- Glassmorphism effects
+- Soft gradients
+- Organic background glows
+- Rounded components
+- Premium typography
+- Smooth animations
+
+---
+
+# ⚙️ Installation
+
+Clone the repository.
+
+```bash
+git clone <repository-url>
+```
+
+Move into the project.
+
+```bash
+cd cardamom-house
+```
+
+Install dependencies.
+
+```bash
+npm install
+```
+
+Run the development server.
+
+```bash
+npm run dev
+```
+
+Open your browser.
+
+```
+http://localhost:3000
+```
+
+---
+
+# 📦 Build
+
+```bash
+npm run build
+```
+
+Start production server.
+
+```bash
+npm start
+```
+
+---
+
+# 🎯 Scripts
+
+```bash
+npm run dev
+```
+
+Start development server.
+
+```bash
+npm run build
+```
+
+Create production build.
+
+```bash
+npm run start
+```
+
+Run production server.
+
+```bash
+npm run lint
+```
+
+Run ESLint.
+
+---
+
+# 🌟 Key Functionalities
+
+✔ Dynamic Menu
+
+✔ Live Restaurant Status
+
+✔ Sticky Category Navigation
+
+✔ Scroll Spy
+
+✔ Dietary Filtering
+
+✔ Dark Mode
+
+✔ Print Friendly Layout
+
+✔ Demo States
+
+✔ Responsive Design
+
+✔ Accessibility
+
+✔ Smooth Scrolling
+
+✔ Premium UI
+
+---
+
+# 📖 Learning Highlights
+
+This project demonstrates:
+
+- React State Management
+- Component Architecture
+- TypeScript
+- Responsive Design
+- Accessibility Best Practices
+- CSS Variables
+- Intersection Observer API
+- Local Storage
+- Theme Management
+- Conditional Rendering
+- Dynamic Filtering
+- Print Media Queries
+
+---
+
+# 🚀 Future Improvements
+
+- Food Photography
+- Search Menu
+- Menu Sorting
+- Multi-language Support
+- Online Reservation
+- Shopping Cart
+- Online Ordering
+- Customer Reviews
+- PWA Support
+- CMS Integration
+
+---
+
+# 👨‍💻 Author
+
+**Rahul Kushwaha**
+
+- GitHub: https://github.com/theRahulkushwaha
+- LinkedIn: https://www.linkedin.com/in/rahulkushwaha16/
+- Portfolio: https://rahulkushwaha.vercel.app/
+
+---
+
+# 📄 License
+
+This project is created for educational and portfolio purposes.

@@ -14,7 +14,7 @@ export function MenuItemCard({
       className={`group rounded-small border border-brown/[0.05] bg-card p-6 shadow-[0_8px_30px_rgba(180,83,9,0.03)] transition-all duration-500 ease-luxury sm:p-7 ${
         soldOut
           ? "opacity-55"
-          : "hover:-translate-y-0.5 hover:shadow-[0_20px_40px_rgba(180,83,9,0.08)]"
+          : "hover:-translate-y-0.5 hover:shadow-xl"
       }`}
     >
       <div className="flex items-start justify-between gap-4">

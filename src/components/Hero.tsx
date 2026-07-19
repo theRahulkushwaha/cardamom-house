@@ -1,6 +1,8 @@
 import type { Restaurant } from "@/types/menu";
 import type { OpenStatus } from "@/lib/hours";
 
+import ThemeToggle from "./ThemeToggle";
+
 export function Hero({
   restaurant,
   status,
@@ -12,7 +14,6 @@ export function Hero({
 }) {
   return (
     <header className="relative overflow-hidden px-6 pb-16 pt-14 sm:px-10 sm:pb-24 sm:pt-20">
-      
       {/* Soft organic background glow — decorative only */}
       <div
         aria-hidden="true"
@@ -24,6 +25,9 @@ export function Hero({
       />
 
       <div className="relative mx-auto max-w-page">
+        <div className="absolute right-0 top-0">
+          <ThemeToggle />
+        </div>
         <div
           className={`inline-flex items-center gap-2 rounded-pill border px-3.5 py-1.5 font-accent text-xs font-semibold uppercase tracking-[0.15em] animate-fade-up ${
             status.isOpen
@@ -40,13 +44,11 @@ export function Hero({
           {status.isOpen
             ? `Open now · until ${status.closesAtLabel}`
             : status.nextOpenLabel
-            ? `Closed · opens ${status.nextOpenLabel}`
-            : "Closed"}
+              ? `Closed · opens ${status.nextOpenLabel}`
+              : "Closed"}
         </div>
 
-        <h1
-          className="mt-6 animate-fade-up font-serif text-[56px] leading-[0.95] tracking-tight text-brown [animation-delay:80ms] sm:text-[88px] md:text-[112px]"
-        >
+        <h1 className="mt-6 animate-fade-up font-serif text-[56px] leading-[0.95] tracking-tight text-brown [animation-delay:80ms] sm:text-[88px] md:text-[112px]">
           {restaurant.name}
         </h1>
 
@@ -54,12 +56,14 @@ export function Hero({
           {restaurant.tagline}
         </p>
 
-        <div className="mt-9 flex flex-wrap items-center gap-3 animate-fade-up [animation-delay:240ms]">
+        <div className="no-print mt-9 flex flex-wrap items-center gap-3 animate-fade-up [animation-delay:240ms]">
           <a
             href="#brunch"
             onClick={(e) => {
               e.preventDefault();
-              document.getElementById("brunch")?.scrollIntoView({ behavior: "smooth" });
+              document
+                .getElementById("brunch")
+                ?.scrollIntoView({ behavior: "smooth" });
             }}
             className="inline-flex items-center gap-2 rounded-pill bg-amber px-6 py-3.5 font-accent text-sm font-semibold text-white shadow-[0_20px_40px_rgba(180,83,9,0.2)] transition-all duration-300 ease-luxury hover:-translate-y-0.5 hover:shadow-[0_24px_48px_rgba(180,83,9,0.3)]"
           >
@@ -69,7 +73,9 @@ export function Hero({
             href="#special"
             onClick={(e) => {
               e.preventDefault();
-              document.getElementById("special")?.scrollIntoView({ behavior: "smooth" });
+              document
+                .getElementById("special")
+                ?.scrollIntoView({ behavior: "smooth" });
             }}
             className="inline-flex items-center gap-2 rounded-pill border border-brown/10 bg-white/60 px-6 py-3.5 font-accent text-sm font-medium text-brown backdrop-blur-md transition-all duration-300 ease-luxury hover:-translate-y-0.5 hover:border-amber/30"
           >

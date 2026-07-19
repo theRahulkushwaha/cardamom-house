@@ -37,6 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${dmSerif.variable} ${manrope.variable} ${inter.variable}`}
     >
       <body className="min-h-screen bg-cream font-body text-brown antialiased">

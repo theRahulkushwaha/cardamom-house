@@ -48,8 +48,11 @@
   --container-page: 1280px;
 }
 
-html {
-  scroll-behavior: smooth;
+html,
+body{
+    transition:
+        background-color .35s ease,
+        color .35s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -79,16 +82,144 @@ html {
 }
 
 @media print {
-  header nav,
-  .no-print {
-    display: none !important;
+
+  /* ------------------------
+      Page
+  -------------------------*/
+
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
   }
+
+  html,
   body {
     background: white !important;
+    color: black !important;
+    font-size: 11pt;
+    line-height: 1.4;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+
+  /* ------------------------
+      Hide UI
+  -------------------------*/
+
+  nav,
+  button,
+  .no-print,
+  .animate-fade-up,
+  [aria-hidden="true"] {
+    display: none !important;
+  }
+
+  /* Hide links that behave like buttons */
+
+  a[href="#brunch"],
+  a[href="#special"] {
+    display: none !important;
+  }
+
+  /* ------------------------
+      Hero
+  -------------------------*/
+
+  header {
+    padding: 0 !important;
+    margin-bottom: 18px;
+    border-bottom: 2px solid #000;
+  }
+
+  header h1 {
+    font-size: 34pt !important;
+    margin-bottom: 8px;
+  }
+
+  header p {
+    color: black !important;
+  }
+
+  /* ------------------------
+      Sections
+  -------------------------*/
+
   section {
     break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 14px;
   }
+
+  section h2 {
+    font-size: 18pt !important;
+    margin-bottom: 10px;
+  }
+
+  /* ------------------------
+      Menu Cards
+  -------------------------*/
+
+  li {
+    border: 1px solid #ddd !important;
+    background: white !important;
+    padding: 10px !important;
+    margin-bottom: 8px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  li h3 {
+    color: black !important;
+  }
+
+  /* ------------------------
+      Prices
+  -------------------------*/
+
+  [aria-label^="Price"] {
+    color: black !important;
+    font-weight: bold;
+  }
+
+  /* ------------------------
+      Pills
+  -------------------------*/
+
+  span {
+    border: 1px solid #999;
+  }
+
+  /* ------------------------
+      Footer
+  -------------------------*/
+
+  footer {
+    background: white !important;
+    color: black !important;
+    border-top: 2px solid #000;
+    margin-top: 20px;
+    padding-top: 14px;
+  }
+
+  footer * {
+    color: black !important;
+  }
+
+  /* ------------------------
+      Links
+  -------------------------*/
+
+  a {
+    color: black !important;
+    text-decoration: none !important;
+  }
+
 }
 
 @keyframes fade-up {
@@ -104,4 +235,41 @@ html {
 
 .animate-fade-up {
   animation: fade-up 0.8s var(--ease-luxury) both;
+}
+
+
+/* ===========================
+        DARK MODE
+=========================== */
+
+html.dark{
+
+    --color-cream:#111827;
+
+    --color-card:#1f2937;
+
+    --color-beige:#374151;
+
+    --color-brown:#f9fafb;
+
+    --color-muted:#d1d5db;
+
+    --color-amber-glow:rgba(245,158,11,.18);
+
+    --color-veg-bg:#243b2d;
+
+    --color-gf-bg:#1d3246;
+
+    --color-spicy-bg:#4a2c2c;
+
+    --color-soldout-bg:#3a3a3a;
+
+}
+
+html.dark body{
+
+    background:var(--color-cream);
+
+    color:var(--color-brown);
+
 }

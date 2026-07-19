@@ -1,13 +1,33 @@
 import type { MenuCategory } from "@/types/menu";
 import { MenuItemCard } from "@/components/MenuItemCard";
 
+import type { FilterType } from "./DietaryFilter";
+
 export function MenuSection({
   category,
   soldOutItemId,
+  filter,
 }: {
   category: MenuCategory;
   soldOutItemId?: string;
-}) {
+  filter: FilterType;
+})
+
+{
+  const filteredItems = category.items.filter((item) => {
+  switch (filter) {
+    case "veg":
+      return item.tags.includes("V");
+
+    case "gf":
+      return item.tags.includes("GF");
+
+    default:
+      return true;
+  }
+});
+
+if (filteredItems.length === 0) return null;
   return (
     <section
       id={category.id}
@@ -30,7 +50,7 @@ export function MenuSection({
         </div>
 
         <ul className="mt-10 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5">
-          {category.items.map((item) => (
+          {filteredItems.map((item) => (
             <MenuItemCard
               key={item.id}
               item={item}

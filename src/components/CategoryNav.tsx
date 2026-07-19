@@ -54,8 +54,7 @@ export function CategoryNav({ categories }: { categories: MenuCategory[] }) {
 
   return (
     <nav
-      aria-label="Menu categories"
-      className="sticky top-0 z-40 border-b border-brown/[0.05] bg-cream/70 py-3 backdrop-blur-xl"
+  className="no-print sticky top-0 z-40 border-b border-brown/[0.05] bg-card/80 py-3 backdrop-blur-xl"
     >
       <div
         ref={navRef}
