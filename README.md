@@ -1,225 +1,94 @@
-# ☕ Cardamom House — Premium Café Menu Experience
+# ☕ Cardamom House — Restaurant Menu
 
-A modern, responsive, and interactive digital café menu built with **Next.js 15**, **React 19**, **Tailwind CSS v4**, and **TypeScript**.
+Live Link : https://cardamom-house-ten.vercel.app/
+Demo Video : https://www.loom.com/share/4adb1bbc50a948d48d8e508aaa41c6ce
 
-This project showcases a premium restaurant website featuring a dynamic menu, live opening hours, dietary filtering, dark mode, smooth scrolling, accessibility improvements, and a professional print layout.
+A responsive restaurant menu built as a frontend trial project using **Next.js 15**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
 
----
-
-## 📸 Preview
-
-> Responsive restaurant menu with a luxury café aesthetic.
-
-### Features
-
-- 🌙 Dark / Light Mode
-- 🥗 Dietary Filters (All, Vegetarian, Gluten-Free)
-- 📱 Fully Responsive Design
-- 📍 Sticky Category Navigation
-- 🎯 Scroll Spy Navigation
-- 🍽️ Today's Special Section
-- ⏰ Live Opening Hours
-- 🚫 Sold Out Item Support
-- 🎭 Demo State Switcher
-- ♿ Accessibility Features
-- 🖨️ Professional Print Layout
-- ✨ Smooth Animations
-- ⚡ Optimized Performance
+The application recreates a polished digital menu experience for **Cardamom House**, a fictional brunch café in Lisbon, with a focus on accessibility, responsive design, and thoughtful UI/UX.
 
 ---
 
-# 🚀 Tech Stack
+## 🚀 Tech Stack
 
-- **Next.js 15**
-- **React 19**
-- **TypeScript**
-- **Tailwind CSS v4**
-- **Lucide React**
-- **CSS Variables**
-- **Intersection Observer API**
-
----
-
-# 📂 Project Structure
-
-```
-src/
-│
-├── app/
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.tsx
-│
-├── components/
-│   ├── Hero.tsx
-│   ├── ThemeToggle.tsx
-│   ├── DietaryFilter.tsx
-│   ├── CategoryNav.tsx
-│   ├── MenuSection.tsx
-│   ├── MenuItemCard.tsx
-│   ├── TodaySpecial.tsx
-│   ├── ClosedBanner.tsx
-│   ├── HoursBlock.tsx
-│   ├── Footer.tsx
-│   ├── DemoStateSwitcher.tsx
-│   └── MenuExperience.tsx
-│
-├── data/
-│   └── menu.ts
-│
-├── lib/
-│   ├── hours.ts
-│   └── demo-state.ts
-│
-└── types/
-    └── menu.ts
-```
+- Next.js 15 (App Router)
+- React 19
+- TypeScript (Strict Mode)
+- Tailwind CSS v4
+- Lucide React
+- Motion
+- Intersection Observer API
 
 ---
 
-# ✨ Features
+## ✨ Features
 
-## 🌙 Dark / Light Theme
+### Core Requirements
 
-- Toggle between Light and Dark mode
-- Automatically detects system theme
-- Theme preference saved using Local Storage
-- Smooth transitions between themes
+- Responsive hero section with restaurant information
+- Dynamic open/closed status
+- Today's Special callout
+- Sticky category navigation with active section highlighting
+- Menu sections with descriptions
+- Menu items with formatted EUR pricing
+- Dietary tags (Vegetarian, Gluten-Free, Spicy)
+- Weekly opening hours with today's highlight
+- Footer containing address, phone number, and Instagram
+- Semantic HTML and accessibility support
 
----
+### Demo States
 
-## 🥗 Dietary Filter
+The application supports three preview states via URL query parameters.
 
-Filter menu items by:
-
-- All
-- Vegetarian
-- Gluten-Free
-
-Empty categories are automatically hidden.
-
----
-
-## 🍽️ Today's Special
-
-Displays the featured menu item of the day.
-
-Supports:
-
-- Available
-- Sold Out
+| State | URL |
+|-------|-----|
+| Open | `?state=open` |
+| Closed | `?state=closed` |
+| Special Sold Out | `?state=special-sold-out` |
 
 ---
 
-## ⏰ Live Opening Hours
+## 🌟 Stretch Goals Implemented
 
-Restaurant status updates dynamically.
-
-Shows:
-
-- Open Now
-- Closed
-- Opens Tomorrow
-- Opens Next Available Day
-
----
-
-## 📍 Sticky Navigation
-
-Category navigation stays visible while scrolling.
-
-Includes:
-
-- Smooth scrolling
-- Active section highlighting
-- Mobile horizontal scrolling
-
----
-
-## 🎭 Demo States
-
-Preview different restaurant states using URL parameters.
-
-Examples:
-
-```
-?state=open
-```
-
-```
-?state=closed
-```
-
-```
-?state=special-sold-out
-```
+- Light / Dark mode (with system preference support)
+- Dietary filters (All / Vegetarian / Gluten-Free)
+- Smooth entrance animations
+- Print-friendly layout using `@media print`
+- Scroll spy navigation
+- Responsive experience across mobile, tablet, and desktop
 
 ---
 
 ## ♿ Accessibility
 
-- Skip Navigation Link
-- Keyboard Accessible
-- Focus Indicators
-- Semantic HTML
-- Screen Reader Support
-- ARIA Labels
+- Semantic HTML (`nav`, `section`, `header`, `footer`)
+- Keyboard accessible navigation
+- Visible focus indicators
+- Skip-to-content link
+- ARIA labels where appropriate
+- High-contrast color combinations
 
 ---
 
-## 🖨️ Print Layout
+## 📂 Project Structure
 
-Optimized for printing.
-
-Print mode automatically:
-
-- Hides navigation
-- Hides buttons
-- Removes animations
-- Removes shadows
-- Uses black text
-- Uses white background
-- Prevents page breaks inside menu sections
-
-Perfect for generating printable restaurant menus.
+```text
+src/
+├── app/
+├── components/
+├── data/
+├── lib/
+└── types/
+```
 
 ---
 
-## 📱 Responsive Design
-
-Optimized for:
-
-- Mobile
-- Tablet
-- Laptop
-- Desktop
-
----
-
-## 🎨 UI Highlights
-
-- Luxury café aesthetic
-- Glassmorphism effects
-- Soft gradients
-- Organic background glows
-- Rounded components
-- Premium typography
-- Smooth animations
-
----
-
-# ⚙️ Installation
+## ⚙️ Getting Started
 
 Clone the repository.
 
 ```bash
 git clone <repository-url>
-```
-
-Move into the project.
-
-```bash
-cd cardamom-house
 ```
 
 Install dependencies.
@@ -228,13 +97,13 @@ Install dependencies.
 npm install
 ```
 
-Run the development server.
+Start the development server.
 
 ```bash
 npm run dev
 ```
 
-Open your browser.
+Visit:
 
 ```
 http://localhost:3000
@@ -242,120 +111,63 @@ http://localhost:3000
 
 ---
 
-# 📦 Build
+## 📦 Production Build
 
 ```bash
 npm run build
-```
-
-Start production server.
-
-```bash
 npm start
 ```
 
 ---
 
-# 🎯 Scripts
+## 📜 Available Scripts
 
 ```bash
 npm run dev
 ```
 
-Start development server.
+Runs the development server.
 
 ```bash
 npm run build
 ```
 
-Create production build.
+Creates the production build.
 
 ```bash
 npm run start
 ```
 
-Run production server.
+Runs the production build.
 
 ```bash
 npm run lint
 ```
 
-Run ESLint.
+Runs ESLint.
 
 ---
 
-# 🌟 Key Functionalities
+## 🔮 Future Improvements
 
-✔ Dynamic Menu
+Given additional time, I would consider adding:
 
-✔ Live Restaurant Status
-
-✔ Sticky Category Navigation
-
-✔ Scroll Spy
-
-✔ Dietary Filtering
-
-✔ Dark Mode
-
-✔ Print Friendly Layout
-
-✔ Demo States
-
-✔ Responsive Design
-
-✔ Accessibility
-
-✔ Smooth Scrolling
-
-✔ Premium UI
+- CMS integration for menu management
+- Search functionality
+- Online ordering
+- Multi-language support
+- Unit and integration testing
+- Performance analytics
 
 ---
 
-# 📖 Learning Highlights
-
-This project demonstrates:
-
-- React State Management
-- Component Architecture
-- TypeScript
-- Responsive Design
-- Accessibility Best Practices
-- CSS Variables
-- Intersection Observer API
-- Local Storage
-- Theme Management
-- Conditional Rendering
-- Dynamic Filtering
-- Print Media Queries
-
----
-
-# 🚀 Future Improvements
-
-- Food Photography
-- Search Menu
-- Menu Sorting
-- Multi-language Support
-- Online Reservation
-- Shopping Cart
-- Online Ordering
-- Customer Reviews
-- PWA Support
-- CMS Integration
-
----
-
-# 👨‍💻 Author
+## 👨‍💻 Author
 
 **Rahul Kushwaha**
 
 - GitHub: https://github.com/theRahulkushwaha
 - LinkedIn: https://www.linkedin.com/in/rahulkushwaha16/
-- Portfolio: https://rahulkushwaha.vercel.app/
+- Portfolio: https://rahul-portfolio-kked.vercel.app/
 
 ---
 
-# 📄 License
-
-This project is created for educational and portfolio purposes.
