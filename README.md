@@ -1,7 +1,7 @@
 # ☕ Cardamom House — Restaurant Menu
 
-Live Link : https://cardamom-house-ten.vercel.app/
-Demo Video : https://www.loom.com/share/4adb1bbc50a948d48d8e508aaa41c6ce
+-Live Link : https://cardamom-house-ten.vercel.app/
+-Demo Video : https://www.loom.com/share/4adb1bbc50a948d48d8e508aaa41c6ce
 
 A responsive restaurant menu built as a frontend trial project using **Next.js 15**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
 
